@@ -275,9 +275,5 @@ PRODUCT_PACKAGES += \
 
 # WJH extras
 PRODUCT_PACKAGES += \
-    wbrowser \
     ka \
-    omniswitch \
-    wqksms \
-    wsatstat \
-    wamaze 
+    omniswitch 
