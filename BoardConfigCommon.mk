@@ -55,7 +55,6 @@ BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/lge/msm8992
-#TARGET_KERNEL_SOURCE := kernel/lge/msm8992_aklu
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
@@ -116,9 +115,12 @@ BOARD_CUSTOM_BT_CONFIG := device/lge/g4-common/bluetooth/libbt_vndcfg.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/g4-common/bluetooth
 
 # RIL
-TARGET_RIL_VARIANT := caf
+#TARGET_RIL_VARIANT := caf
 
 # GPS
+#USE_DEVICE_SPECIFIC_GPS := true
+#USE_DEVICE_SPECIFIC_LOC_API := true
+#TARGET_NO_RPC := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
@@ -141,9 +143,6 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 HAVE_ADRENO_SOURCE:= false
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
-# Boot animation
-TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
-
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
@@ -151,11 +150,7 @@ EXTENDED_FONT_FOOTPRINT := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Offmode Charging
-WITH_CM_CHARGER := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
-BOARD_CHARGER_ENABLE_SUSPEND := false
-BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
-
 BOARD_CHARGING_CMDLINE_NAME := "androidboot.mode"
 BOARD_CHARGING_CMDLINE_VALUE := "chargerlogo"
 
@@ -172,6 +167,9 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
@@ -183,9 +181,9 @@ TARGET_HW_DISK_ENCRYPTION := false
 BOARD_NFC_CHIPSET := pn547
 BOARD_NFC_DEVICE := "/dev/pn547"
 
-# CMHW
-BOARD_HARDWARE_CLASS += $(COMMON_PATH)/cmhw
-BOARD_USES_CYANOGEN_HARDWARE := true
+# HAL static libs
+BOARD_HAL_STATIC_LIBRARIES := \
+    libhealthd.msm8992
 
 # inherit from the proprietary version
 -include vendor/lge/g4-common/BoardConfigVendor.mk

@@ -679,15 +679,16 @@ service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc diag
-    disabled
+    group radio audio bluetooth gps nfc diag qcom_diag wakelock
 
 service netmgrd /system/bin/netmgrd
     class main
-    group radio
+    group radio system wakelock
 
 service qti /system/vendor/bin/qti
     class main
+    user radio
+    group radio qcom_diag
     disabled
 
 service sensors /system/bin/sensors.qcom

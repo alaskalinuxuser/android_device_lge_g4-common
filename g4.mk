@@ -133,9 +133,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# Camera
+# Gello
 PRODUCT_PACKAGES += \
-    Snap
+    Gello
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -158,7 +158,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sap.conf:system/etc/sap.conf
 
 # IR
-#PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
 #    consumerir.msm8992 \
 
 # IRSC
@@ -205,7 +205,7 @@ PRODUCT_PACKAGES += \
 
 # QuickCircle Case App
 PRODUCT_PACKAGES += \
-    FlipFlap
+    QuickCircle
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -228,24 +228,31 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml
 
-# OMX
+# MM_AUDIO
 PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libdashplayer \
-    libdivxdrmdecrypt \
-    libextmedia_jni \
+    libOmxAacDec \
     libOmxAacEnc \
     libOmxAmrEnc \
-    libOmxCore \
     libOmxEvrcEnc \
+    libOmxMp3Dec \
     libOmxQcelp13Enc \
-    libOmxSwVencMpeg4 \
+    libOmxAc3HwDec \
+    libstagefright_soft_flacdec
+
+# MM_CORE
+PRODUCT_PACKAGES += \
+    libmm-omxcore \
+    libOmxCore
+
+# MM_VIDEO
+PRODUCT_PACKAGES += \
+    libdivxdrmdecrypt \
     libOmxVdec \
     libOmxVdecHevc \
+    libOmxVdpp \
     libOmxVenc \
-    libOmxVidcCommon \
-    libstagefrighthw \
-    libstagefright_soft_flacdec
+    libOmxVidEnc \
+    libstagefrighthw
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -269,11 +276,12 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full \
     libcnefeatureconfig \
     librmnetctl \
     libxml2
 
 # WJH extras
 PRODUCT_PACKAGES += \
-    ka \
-    omniswitch 
+    wqksms \
+    wamaze 

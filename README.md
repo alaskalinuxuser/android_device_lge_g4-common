@@ -1,6 +1,6 @@
 Copyright 2015 - The CyanogenMod Project
 
-Modified by the AlaskaLinuxUser for AOKP 7.1.2
+Modified by the AlaskaLinuxUser for OmniRom 7.1.2
 https://thealaskalinuxuser.wordpress.com
 
 Device configuration for LG G4.
